@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../boot/epsiview.com/.idea/epsiview.com.iml" filepath="$PROJECT_DIR$/../boot/epsiview.com/.idea/epsiview.com.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/python-final-project.iml" filepath="$PROJECT_DIR$/.idea/python-final-project.iml" />
     </modules>
   </component>
