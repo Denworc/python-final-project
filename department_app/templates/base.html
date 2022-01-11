@@ -8,18 +8,19 @@
   <meta name="author" content=""/>
   <title>{% block tittle %}{% endblock %}</title>
   <!-- simplebar CSS-->
-  <link href="static/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+  <link href="{{ url_for('static', filename='plugins/simplebar/css/simplebar.css')}}" rel="stylesheet"/>
   <!-- Bootstrap core CSS-->
-  <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet"/>
   <!-- animate CSS-->
-  <link href="static/css/animate.css" rel="stylesheet" type="text/css"/>
+  <link href="{{ url_for('static', filename='css/animate.css')}}" rel="stylesheet" type="text/css"/>
   <!-- Icons CSS-->
-  <link href="static/css/icons.css" rel="stylesheet" type="text/css"/>
+  <link href="{{ url_for('static', filename='css/icons.css')}}" rel="stylesheet" type="text/css"/>
   <!-- Sidebar CSS-->
-  <link href="static/css/sidebar-menu.css" rel="stylesheet"/>
+  <link href="{{ url_for('static', filename='css/sidebar-menu.css')}}" rel="stylesheet"/>
   <!-- Custom Style-->
-  <link href="static/css/app-style.css" rel="stylesheet"/>
-
+  <link href="{{ url_for('static', filename='css/app-style.css')}}" rel="stylesheet"/>
+    <!--Bootstrap Datepicker-->
+  <link href="{{ url_for('static', filename='plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -46,20 +47,20 @@
 <!--End wrapper-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="static/js/jquery.min.js"></script>
-  <script src="static/js/popper.min.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
 
   <!-- simplebar js -->
-  <script src="static/plugins/simplebar/js/simplebar.js"></script>
+  <script src="{{ url_for('static', filename='plugins/simplebar/js/simplebar.js')}}"></script>
   <!-- waves effect js -->
-  <script src="static/js/waves.js"></script>
+  <script src="{{ url_for('static', filename='js/waves.js')}}"></script>
 	<!-- sidebar-menu js -->
-	<script src="static/js/sidebar-menu.js"></script>
+	<script src="{{ url_for('static', filename='js/sidebar-menu.js')}}"></script>
   <!-- Custom scripts -->
-  <script src="static/js/app-script.js"></script>
+  <script src="{{ url_for('static', filename='js/app-script.js')}}"></script>
   <!-- Index js -->
-  <script src="static/js/index2.js"></script>
+  <script src="{{ url_for('static', filename='js/index2.js')}}"></script>
 
 <!--  &lt;!&ndash; Flot Chart JS &ndash;&gt;-->
 <!--  <script src="static/plugins/flot/jquery.flot.js"></script>-->
@@ -69,6 +70,26 @@
 <!--  <script src="static/plugins/flot/jquery.flot.stack.js"></script>-->
 <!--  <script src="static/plugins/flot/jquery.flot.pie.js"></script>-->
 <!--  <script src="static/plugins/flot/float-chart.js"></script>-->
+
+  <script src="{{ url_for('static', filename='plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+
+<script>
+      $('#default-datepicker').datepicker({
+        todayHighlight: true
+      });
+      $('#autoclose-datepicker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+      });
+
+      $('#inline-datepicker').datepicker({
+         todayHighlight: true
+      });
+
+      $('#dateragne-picker .input-daterange').datepicker({
+       });
+
+    </script>
 
 </body>
 </html>
