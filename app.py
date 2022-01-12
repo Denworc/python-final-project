@@ -1,5 +1,11 @@
 import os
-from department_app import app
+from department_app import app, db
+from department_app.models import Department, Employee
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'Department': Department, 'Employee': Employee}
 
 
 if __name__ == '__main__':

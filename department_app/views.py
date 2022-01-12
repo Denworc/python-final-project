@@ -1,5 +1,7 @@
-from flask import Flask, render_template, url_for, request, redirect
-from department_app import app, Department, db
+from flask import Flask, render_template, url_for, request, redirect, flash
+from department_app import app, db
+from department_app.models import Department
+from department_app.forms.departmentForms import DepartmentForm
 
 
 @app.route('/')
@@ -10,6 +12,20 @@ def index():
 
 @app.route('/departments', methods=['POST', 'GET'])
 def departments():
+    form = DepartmentForm()
+
+    if form.validate_on_submit():
+        department = Department(name=form.name.data)
+
+        try:
+            db.session.add(department)
+            db.session.commit()
+            flash('You add new department: {}'.format(
+                form.name.data))
+            return redirect(url_for('departments'))
+        except:
+            return "DB_ADD_ERROR"
+
     if request.method == 'POST':
         name = request.form['name']
 
@@ -18,12 +34,11 @@ def departments():
         try:
             db.session.add(department)
             db.session.commit()
-            return redirect('/departments')
+            return redirect(url_for('departments'))
         except:
             return "DB_ADD_ERROR"
-    else:
-        departments = Department.query.order_by(Department.id).all()
-        return render_template("departments.html", content='<h1>Main page<h1>', departments=departments)
+    departments = Department.query.order_by(Department.id).all()
+    return render_template("departments.html", content='<h1>Main page<h1>', departments=departments, form=form)
 
 
 @app.route('/department/<int:id>', methods=['POST', 'GET'])
@@ -42,7 +57,7 @@ def department_delete(id):
         try:
             db.session.delete(department)
             db.session.commit()
-            return redirect('/departments')
+            return redirect(url_for('departments'))
         except:
             return "DB_DEL_ERROR"
 
