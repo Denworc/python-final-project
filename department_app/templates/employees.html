@@ -55,10 +55,16 @@
 			     <div class="card-body ">
 				   <div class="card-title">Add new</div>
 				   <hr>
-				    <form>
+				    <form method="post">
+                        {{ form.hidden_tag() }}
 					 <div class="form-group">
-					  <label for="input-1">Name</label>
-					  <input type="text" class="form-control" id="input-1" placeholder="Enter Name">
+<!--					  <label for="input-1">Name</label>-->
+<!--					  <input type="text" class="form-control" id="input-1" placeholder="Enter Name">-->
+                        {{ form.name.label }}
+                        {{ form.name(class="form-control", id="name", placeholder="Enter Name") }}
+                        {% for error in form.name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
 					 </div>
                         <div class="form-group" data-select2-id="7">
                       <label>Department</label>
@@ -71,11 +77,31 @@
                           <option data-select2-id="13">Dep_6</option>
                           <option data-select2-id="14">Dep_7</option>
                           <option data-select2-id="15">Dep_8</option>
-                      </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 629px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-zlbv-container"><span class="select2-selection__rendered" id="select2-zlbv-container" role="textbox" aria-readonly="true" title="India">India</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                      </select>
+                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 629px;">
+                                <span class="selection">
+                                    <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-zlbv-container">
+                                        <span class="select2-selection__rendered" id="select2-zlbv-container" role="textbox" aria-readonly="true" title="India">
+                                            India
+                                        </span>
+                                        <span class="select2-selection__arrow" role="presentation">
+                                            <b role="presentation"></b>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="dropdown-wrapper" aria-hidden="true">
+
+                                </span>
+                            </span>
                     </div>
 					 <div class="form-group">
-					  <label for="autoclose-datepicker">Date of birth</label>
-					  <input type="text" id="autoclose-datepicker" class="form-control" placeholder="01/01/2001">
+<!--					  <label for="autoclose-datepicker">Date of birth</label>-->
+<!--					  <input type="text" id="autoclose-datepicker" class="form-control" placeholder="01/01/2001">-->
+                        {{ form.date_of_birth.label }}
+                        {{ form.date_of_birth(class="form-control", id="autoclose-datepicker", placeholder="01/01/2001") }}
+                        {% for error in form.name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
 					 </div>
                      <div class="form-group">
 					  <label for="input-4">Salary</label>

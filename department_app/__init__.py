@@ -1,4 +1,6 @@
 import os
+import logging
+from logging.handlers import RotatingFileHandler
 
 from flask import Flask
 from config import Config
@@ -6,7 +8,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
+
 # def create_app(test_config=None):
+#     """Application-factory pattern"""
 #     app = Flask(__name__, instance_relative_config=True)
 #     app.config.from_mapping(
 #         SECRET_KEY='some_dev_key',
@@ -36,6 +40,30 @@ app = Flask(__name__, instance_relative_config=True)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+
+
+
+
+# import logger
+if not app.debug:
+
+    if not os.path.exists('logs'):
+        os.mkdir('logs')
+
+    file_handler = RotatingFileHandler('logs/department_app.log', maxBytes=10240,
+                                       backupCount=10)
+    file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+    file_handler.setLevel(logging.INFO)  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+    app.logger.addHandler(file_handler)
+
+    app.logger.setLevel(logging.INFO)
+    app.logger.info('Departments app')
+
+
+
 
 # if test_config is None:
 #     # load the instance config, if it exists, when not testing
