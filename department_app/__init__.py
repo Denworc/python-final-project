@@ -3,10 +3,9 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask
-from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from config import Config
 
 
 # def create_app(test_config=None):
