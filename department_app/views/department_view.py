@@ -1,6 +1,6 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, current_app
+from flask import render_template, url_for, redirect, flash
 from department_app import app, db
-from department_app import models, errors, forms
+from department_app import models, forms
 
 
 @app.route('/departments', methods=['POST', 'GET'])
@@ -37,12 +37,33 @@ def departments():
 @app.route('/department/<int:id>', methods=['POST', 'GET'])
 def department(id):
     department = models.Department.query.get_or_404(id)
-    employees = department.employees.all()
-
-    if request.method == 'POST':
-        pass
+    departments = models.Department.query.order_by(models.Department.id).all()
+    form = forms.EmployeeForm()
+    if department:
+        form.department_id.data = department.id
     else:
-        return render_template("department.html", department=department, employees=employees)
+        form.department_id.data = None
+    form.department_id.choices = [(int(d.id), d.name) for d in departments]
+
+    if form.validate_on_submit():
+        employee = models.Employee(name=form.name.data,
+                                   date_of_birth=form.date_of_birth.data,
+                                   salary=form.salary.data,
+                                   department_id=department.id
+                                   )
+
+        try:
+            db.session.add(employee)
+            db.session.commit()
+            flash('You add new employee: {}'.format(
+                form.name.data))
+            return redirect(url_for('department', id=department.id))
+        except Exception as ex:
+            return str(ex)
+
+    employees = department.employees
+
+    return render_template("department.html", department=department, employees=employees, form=form)
 
 
 @app.route('/department/<int:id>/delete')

@@ -31,7 +31,7 @@ Departments App
                         <tbody class="linkRow">
                         {% for department in departments %}
                         <tr data-href="{{ url_for('department', id = department.id) }}">
-                            <th scope="row">{{ department.id }}</th>
+                            <th scope="row">{{ loop.index }}</th>
                             <td>{{ department.name }}</td>
                         </tr>
                         {% endfor %}

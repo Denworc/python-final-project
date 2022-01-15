@@ -1,51 +1,81 @@
 {% extends 'base.html' %}
 
 {% block tittle %}
-    Departments App
+Departments App
 {% endblock %}
 
 {% block body %}
 <div class="row">
 
-        <div class="col-lg-10 mx-auto">
-            <div class="card">
-			     <div class="card-body">
-				   <div class="card-title">Edit</div>
-				   <hr>
-				    <form>
-					 <div class="form-group">
-					  <label for="input-1">Name</label>
-					  <input type="text" class="form-control" id="input-1" placeholder="Enter Name">
-					 </div>
-                      <div class="form-group" data-select2-id="7">
-                      <label>Department</label>
-                      <select class="form-control single-select select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                          <option data-select2-id="3">Dep_1</option>
-                          <option data-select2-id="9">Dep_2</option>
-                          <option data-select2-id="10">Dep_3</option>
-                          <option data-select2-id="11">Dep_4</option>
-                          <option data-select2-id="12">Dep_5</option>
-                          <option data-select2-id="13">Dep_6</option>
-                          <option data-select2-id="14">Dep_7</option>
-                          <option data-select2-id="15">Dep_8</option>
-                      </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 629px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-zlbv-container"><span class="select2-selection__rendered" id="select2-zlbv-container" role="textbox" aria-readonly="true" title="India">India</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+    <div class="col-lg-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Edit</div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <hr>
+                <form action="" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <!--					  <label for="input-1">Name</label>-->
+                        <!--					  <input type="text" class="form-control" id="input-1" placeholder="Enter Name">-->
+                        {{ form.name.label }}
+                        {{ form.name(class="form-control", id="name", placeholder="Enter Name", value=employee.name) }}
+                        {% for error in form.name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
-					 <div class="form-group">
-					  <label for="autoclose-datepicker">Date of birth</label>
-					  <input type="text" id="autoclose-datepicker" class="form-control" placeholder="01/01/2001">
-					 </div>
-                     <div class="form-group">
-					  <label for="input-4">Salary</label>
-					  <input type="text" class="form-control" id="input-4" placeholder="Enter Salary">
-					 </div>
-					 <div class="form-group">
-					  <button type="submit" class="btn btn-success shadow-success px-5"><i class="ti-save"></i> Save</button>
-                      <button type="submit" class="btn btn-danger shadow-danger px-5"><i class="icon-user-unfollow"></i> Delete</button>
-					</div>
-					</form>
-				 </div>
-			   </div>
-        </div>
+                    <div class="form-group">
+                        {{ form.department_id.label }}
+                        {{ form.department_id(class="form-control") }}
+                        {% for error in form.department_id.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <!--					  <label for="autoclose-datepicker">Date of birth</label>-->
+                        <!--					  <input type="text" id="autoclose-datepicker" class="form-control" placeholder="01/01/2001">-->
+                        {{ form.date_of_birth.label }}
+                        {{ form.date_of_birth(class="form-control", placeholder="01.01.2001",
+                        value=employee.date_of_birth) }}
+                        {% for error in form.date_of_birth.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.salary.label }}
+                        {{ form.salary(class="form-control", id="salary", placeholder="Enter salary",
+                        value=employee.salary) }}
+                        {% for error in form.salary.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
 
-      </div><!--End Row-->
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <button class="btn btn-success shadow-success px-5" type="submit"><i
+                                    class="icon-user-follow"></i>
+                                Edit
+                            </button>
+                        </div>
+
+                        <div class="col">
+                            <a class="btn btn-danger shadow-danger px-5"
+                               href="{{ url_for('employee_delete', id = employee.id) }}"
+                               type="submit"> Delete employee</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div><!--End Row-->
 {% endblock %}

@@ -1,6 +1,6 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, current_app
-from department_app import app, db
-from department_app import models, errors, forms
+from flask import render_template
+from department_app import app
+from department_app import models
 
 
 @app.route('/')
