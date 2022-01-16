@@ -1,10 +1,21 @@
+"""
+Module contains '/employees' route handling functions.
+Functions:
+    employees()
+    employee(id)
+    employee_delete(id):
+"""
 from flask import render_template, url_for, redirect, flash
-from department_app import app, db
-from department_app import models, forms, service
+from department_app import app
+from department_app import forms, service
 
 
 @app.route('/employees', methods=['POST', 'GET'])
 def employees():
+    """
+        Function display employees list and take parameters to add new employee by POST request
+    :return: Employees page template
+    """
     form = forms.EmployeeForm()
     date_form = forms.EmployeeSearchForm()
 
@@ -39,6 +50,11 @@ def employees():
 
 @app.route('/employees/<int:id>', methods=['POST', 'GET'])
 def employee(id):
+    """
+        Function display employee(id) editing page and take parameters to update employee data by POST request
+    :param id:
+    :return: Employees page template
+    """
     employee = service.EmployeeService.get_employee(id)
     departments = service.EmployeeService.get_employees_list()
 
@@ -50,7 +66,7 @@ def employee(id):
             "name": form.name.data,
             "date_of_birth": form.date_of_birth.data,
             "salary": form.salary.data,
-            "department_id": form.department.id
+            "department_id": form.department_id.data
         }
 
         try:
@@ -72,6 +88,11 @@ def employee(id):
 
 @app.route('/employees/<int:id>/delete')
 def employee_delete(id):
+    """
+        Function delete employee from db by id and redirect on employees page.
+    :param id:
+    :return: Employees page url
+    """
     try:
         service.EmployeeService.delete_employee(id)
         return redirect(url_for('employees'))

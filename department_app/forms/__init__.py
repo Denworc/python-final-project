@@ -1,2 +1,2 @@
-from .departmentForms import DepartmentForm
-from .employeeForms import EmployeeForm, EmployeeSearchForm
+from .department_forms import DepartmentForm
+from .employee_forms import EmployeeForm, EmployeeSearchForm
