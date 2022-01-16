@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta
 import unittest
-from .. import app, db
+from department_app import app, db
 # from department_app.models import Department, Employee
+
+client = app.test_client()
 
 
 class DepartmentModelCase(unittest.TestCase):
@@ -13,5 +15,8 @@ class DepartmentModelCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
 
-    def test_department_add(self):
-        pass
+    @staticmethod
+    def test_department_add():
+        res = client.get('/departments')
+
+        assert res.status_code == 200

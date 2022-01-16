@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
-  <title>{% block tittle %}{% endblock %}</title>
-  <!-- simplebar CSS-->
-  <link href="{{ url_for('static', filename='plugins/simplebar/css/simplebar.css')}}" rel="stylesheet"/>
-  <!-- Bootstrap core CSS-->
-  <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet"/>
-  <!-- animate CSS-->
-  <link href="{{ url_for('static', filename='css/animate.css')}}" rel="stylesheet" type="text/css"/>
-  <!-- Icons CSS-->
-  <link href="{{ url_for('static', filename='css/icons.css')}}" rel="stylesheet" type="text/css"/>
-  <!-- Sidebar CSS-->
-  <link href="{{ url_for('static', filename='css/sidebar-menu.css')}}" rel="stylesheet"/>
-  <!-- Custom Style-->
-  <link href="{{ url_for('static', filename='css/app-style.css')}}" rel="stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <title>{% block tittle %}{% endblock %}</title>
+    <!-- simplebar CSS-->
+    <link href="{{ url_for('static', filename='plugins/simplebar/css/simplebar.css')}}" rel="stylesheet"/>
+    <!-- Bootstrap core CSS-->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="{{ url_for('static', filename='css/animate.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="{{ url_for('static', filename='css/icons.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <link href="{{ url_for('static', filename='css/sidebar-menu.css')}}" rel="stylesheet"/>
+    <!-- Custom Style-->
+    <link href="{{ url_for('static', filename='css/app-style.css')}}" rel="stylesheet"/>
     <!--Bootstrap Datepicker-->
-  <link href="{{ url_for('static', filename='plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}"
+          rel="stylesheet" type="text/css">
 
 
 </head>
@@ -30,37 +31,37 @@
 <!-- Start wrapper-->
 <div id="wrapper">
 
-{% include "partials/_left-sidebar.html" %}
+    {% include "partials/_left-sidebar.html" %}
 
-{% include "partials/_topbar.html" %}
+    {% include "partials/_topbar.html" %}
 
-<div class="clearfix"></div>
-  <div class="content-wrapper">
-    <div class="container-fluid">
-        {% block body %}{% endblock %}
-    </div>
-  </div><!--End content-wrapper-->
+    <div class="clearfix"></div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+    </div><!--End content-wrapper-->
 
-  {% include "partials/_footer.html" %}
+    {% include "partials/_footer.html" %}
 
 </div>
 <!--End wrapper-->
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
 
-  <!-- simplebar js -->
-  <script src="{{ url_for('static', filename='plugins/simplebar/js/simplebar.js')}}"></script>
-  <!-- waves effect js -->
-  <script src="{{ url_for('static', filename='js/waves.js')}}"></script>
-	<!-- sidebar-menu js -->
-	<script src="{{ url_for('static', filename='js/sidebar-menu.js')}}"></script>
-  <!-- Custom scripts -->
-  <script src="{{ url_for('static', filename='js/app-script.js')}}"></script>
-  <!-- Index js -->
-  <script src="{{ url_for('static', filename='js/index2.js')}}"></script>
+<!-- simplebar js -->
+<script src="{{ url_for('static', filename='plugins/simplebar/js/simplebar.js')}}"></script>
+<!-- waves effect js -->
+<script src="{{ url_for('static', filename='js/waves.js')}}"></script>
+<!-- sidebar-menu js -->
+<script src="{{ url_for('static', filename='js/sidebar-menu.js')}}"></script>
+<!-- Custom scripts -->
+<script src="{{ url_for('static', filename='js/app-script.js')}}"></script>
+<!-- Index js -->
+<script src="{{ url_for('static', filename='js/index2.js')}}"></script>
 
 <!--  &lt;!&ndash; Flot Chart JS &ndash;&gt;-->
 <!--  <script src="static/plugins/flot/jquery.flot.js"></script>-->
@@ -71,7 +72,7 @@
 <!--  <script src="static/plugins/flot/jquery.flot.pie.js"></script>-->
 <!--  <script src="static/plugins/flot/float-chart.js"></script>-->
 
-  <script src="{{ url_for('static', filename='plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
 <script>
       $('#default-datepicker').datepicker({
@@ -89,7 +90,9 @@
       $('#dateragne-picker .input-daterange').datepicker({
        });
 
-    </script>
+
+</script>
+
 
 </body>
 </html>

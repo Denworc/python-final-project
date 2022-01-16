@@ -10,7 +10,7 @@ Departments App
     <div class="col-8 col-lg-8 col-xl-8">
         <div class="card border-right">
             <div class="card-body">
-                <h5 class="card-title">Employees</h5>
+                <h5 class="card-title">{{ department.name }} employees</h5>
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul>
@@ -24,11 +24,10 @@ Departments App
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th class="col-1" scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Department</th>
-                            <th scope="col">Date of birth</th>
-                            <th scope="col">Salary</th>
+                            <th class="col-1" scope="col">Salary</th>
+                            <th class="col-1" scope="col"></th>
                         </tr>
                         </thead>
                         <tbody class="linkRow">
@@ -36,9 +35,14 @@ Departments App
                         <tr data-href="{{ url_for('employee', id = employee.id) }}">
                             <th scope="row">{{ loop.index }}</th>
                             <td>{{ employee.name }}</td>
-                            <td>{{ employee.department }}</td>
-                            <td>{{ employee.date_of_birth.strftime('%d.%m.%Y') }}</td>
                             <td>{{ employee.salary }}</td>
+                            <td style="padding-bottom: 7px;padding-top: 7px;">
+                                <a class="btn btn-danger shadow-danger"
+                                   href="{{ url_for('employee_delete', id = employee.id) }}"
+                                   style="padding-bottom: 5px;padding-top: 5px;"
+                                   type="submit"> Delete</a>
+
+                            </td>
                         </tr>
                         {% endfor %}
                         </tbody>

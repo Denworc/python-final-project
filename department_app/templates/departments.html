@@ -26,6 +26,7 @@ Departments App
                         <tr>
                             <th class="col-1" scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th class="col-1" scope="col"></th>
                         </tr>
                         </thead>
                         <tbody class="linkRow">
@@ -33,6 +34,13 @@ Departments App
                         <tr data-href="{{ url_for('department', id = department.id) }}">
                             <th scope="row">{{ loop.index }}</th>
                             <td>{{ department.name }}</td>
+                            <td style="padding-bottom: 7px;padding-top: 7px;">
+                                <a class="btn btn-danger shadow-danger"
+                                    style="padding-bottom: 5px;padding-top: 5px;"
+                                   href="{{ url_for('department_delete', id = department.id) }}"
+                                   type="submit"> Delete</a>
+
+                            </td>
                         </tr>
                         {% endfor %}
                         </tbody>

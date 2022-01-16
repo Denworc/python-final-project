@@ -5,7 +5,8 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from config import Config
+from config import Config, DevelopmentConfig
+from flask_restful import Api
 
 
 # def create_app(test_config=None):
@@ -36,9 +37,10 @@ from config import Config
 
 
 app = Flask(__name__, instance_relative_config=True)
-app.config.from_object(Config)
+app.config.from_object(DevelopmentConfig)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+api = Api(app)
 
 
 
@@ -89,3 +91,5 @@ except OSError:
 
 # from department_app.views import views
 from department_app import views
+from department_app.rest.department_api import DepartmentApi
+from department_app.rest.employee_api import EmployeesApi
