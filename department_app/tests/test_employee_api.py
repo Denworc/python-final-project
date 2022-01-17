@@ -43,10 +43,10 @@ class EmployeeAPITestCase(BaseCase):
         db.session.add(employee)
         db.session.commit()
         response = self.client.put('/api/v1.0/employees/1', data=dict(name='new_name',
-                                                                       date_of_birth='1999-01-01',
-                                                                       salary=123,
-                                                                       department_id=1,
-                                                                       ), follow_redirects=True)
+                                                                      date_of_birth='1999-01-01',
+                                                                      salary=123,
+                                                                      department_id=1,
+                                                                      ), follow_redirects=True)
         self.assertEqual(response.status_code, http.HTTPStatus.CREATED)
         self.assertEqual('new_name', str(Employee.query.get(1).name))
 
