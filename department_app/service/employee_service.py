@@ -78,6 +78,6 @@ class EmployeeService:
         :param end_date: to 'date'
         :return: employees list
         """
-        employees = Employee.query.filter(Employee.date_of_birth.between(start_date, end_date))
+        employees = Employee.query.filter(Employee.date_of_birth.between(start_date, end_date)).all()
 
         return employees
