@@ -20,6 +20,13 @@ class DepartmentServiceTestCase(BaseCase):
         db.session.commit()
         self.assertEqual(1, service.DepartmentService.get_department(1).id)
 
+    def test_get_department_salary(self):
+        department = Department(name="test")
+
+        db.session.add(department)
+        db.session.commit()
+        self.assertEqual(0, department.get_average_salar())
+
     def test_get_department_by_name(self):
         department = Department(name="test")
 

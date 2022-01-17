@@ -86,4 +86,4 @@ class EmployeesApi(Resource):
         return 'Deleted successfully', 204
 
 
-api.add_resource(EmployeesApi, "/api/v1/employees", "/api/v1/employees/", "/api/v1/employees/<int:id>")
+api.add_resource(EmployeesApi, "/api/v1.0/employees", "/api/v1.0/employees/", "/api/v1.0/employees/<int:id>")

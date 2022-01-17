@@ -78,4 +78,4 @@ class DepartmentApi(Resource):
         return 'Deleted successfully', 204
 
 
-api.add_resource(DepartmentApi, "/api/v1/departments", "/api/v1/departments/", "/api/v1/departments/<int:id>")
+api.add_resource(DepartmentApi, "/api/v1.0/departments", "/api/v1.0/departments/", "/api/v1.0/departments/<int:id>")

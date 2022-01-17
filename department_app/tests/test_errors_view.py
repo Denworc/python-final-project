@@ -1,7 +1,7 @@
 from department_app.tests.tests import BaseCase
 
 
-class EmployeeServiceTestCase(BaseCase):
+class ErrorViewTestCase(BaseCase):
     def test_not_found_error(self):
         path = '/non_existent_endpoint'
         response = self.client.get(path)
