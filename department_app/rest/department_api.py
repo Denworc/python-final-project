@@ -1,10 +1,16 @@
-from flask import Flask, request
-from flask_restful import Resource, Api, reqparse, abort, fields, marshal_with
+"""
+    Module with RESTful service implementation of department elements
+"""
+from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from department_app import api
 from department_app import service
 
 
 def abort_if_todo_doesnt_exist(department_id):
+    """
+        Function check element in db by id
+    :param department_id: department`s id
+    """
     try:
         service.DepartmentService.get_department(department_id)
     except:
@@ -21,9 +27,17 @@ resource_fields = {
 
 
 class DepartmentApi(Resource):
+    """
+        Employees Api service implementation class
+    """
     @staticmethod
     @marshal_with(resource_fields, envelope='departments')
     def get(id=0):
+        """
+            Function return department by id or departments list
+        :param id: department`s id
+        :return: department / departments list
+        """
         if id == 0:
             return service.DepartmentService.get_departments_list(), 200
         abort_if_todo_doesnt_exist(id)
@@ -31,6 +45,10 @@ class DepartmentApi(Resource):
 
     @staticmethod
     def post():
+        """
+            Function ad new department element to db
+        :return: {message}, 201
+        """
         params = parser.parse_args()
         if service.DepartmentService.get_department_by_name(name=params['name']):
             abort(422, message="Department already exist")
@@ -39,6 +57,11 @@ class DepartmentApi(Resource):
 
     @staticmethod
     def put(id):
+        """
+            Function edit department by id
+        :param id: department`s id
+        :return: {message}, 201
+        """
         params = parser.parse_args()
         service.DepartmentService.update_department(id, params['name'])
         return 'Edited successfully', 201
@@ -46,9 +69,9 @@ class DepartmentApi(Resource):
     @staticmethod
     def delete(id):
         """
-
-        :param todo_id:
-        :return:
+            Function delete department by id
+        :param id: department`s id
+        :return: {message}, 204
         """
         abort_if_todo_doesnt_exist(id)
         service.DepartmentService.delete_department(id)

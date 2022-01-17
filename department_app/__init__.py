@@ -8,7 +8,7 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from config import Config, DevelopmentConfig
+from config import DevelopmentConfig
 from flask_restful import Api
 
 

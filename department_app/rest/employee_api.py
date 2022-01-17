@@ -1,15 +1,17 @@
+"""
+    Module with RESTful service implementation of employee elements
+"""
 from datetime import datetime
 
-from flask import Flask, request
-from flask_restful import Resource, Api, reqparse, abort, fields, marshal_with
+from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from department_app import api
 from department_app import service
 
 
 def abort_if_todo_doesnt_exist(employee_id):
     """
-
-    :param employee_id:
+        Function check element in db by id
+    :param employee_id: employee`s id
     """
     try:
         service.EmployeeService.get_employee(employee_id)
@@ -34,15 +36,15 @@ resource_fields = {
 
 class EmployeesApi(Resource):
     """
-
+        Employees Api service implementation class
     """
     @staticmethod
     @marshal_with(resource_fields, envelope='departments')
     def get(id=0):
         """
-
-        :param id:
-        :return:
+            Function return employee by id or employees list
+        :param id: employee`s id
+        :return: employee / employees list
         """
         if id == 0:
             return service.EmployeeService.get_employees_list(), 200
@@ -52,8 +54,8 @@ class EmployeesApi(Resource):
     @staticmethod
     def post():
         """
-
-        :return:
+            Function ad new employee element to db
+        :return: {message}, 201
         """
         params = parser.parse_args()
         params['date_of_birth'] = datetime.strptime(params['date_of_birth'], '%Y-%m-%d')
@@ -63,9 +65,9 @@ class EmployeesApi(Resource):
     @staticmethod
     def put(id):
         """
-
-        :param id:
-        :return:
+            Function edit employee by id
+        :param id: employee`s id
+        :return: {message}, 201
         """
         params = parser.parse_args()
         params['date_of_birth'] = datetime.strptime(params['date_of_birth'], '%Y-%m-%d')
@@ -75,9 +77,9 @@ class EmployeesApi(Resource):
     @staticmethod
     def delete(id):
         """
-
-        :param id:
-        :return:
+            Function delete employee by id
+        :param id: employee`s id
+        :return: {message}, 204
         """
         abort_if_todo_doesnt_exist(id)
         service.EmployeeService.delete_employee(id)
