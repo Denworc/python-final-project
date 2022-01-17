@@ -6,45 +6,6 @@ Departments App
 
 {% block body %}
 <div class="row">
-
-    <div class="col-4 col-lg-4 col-xl-4">
-        <div class="card border-right">
-            <div class="card-body">
-                <h5 class="card-title">Departments</h5>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                    <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                {% endwith %}
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th class="col-1" scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th class="col-1" scope="col">Average salary</th>
-                        </tr>
-                        </thead>
-                        <tbody class="linkRow">
-                        {% for department in departments %}
-                        <tr data-href="{{ url_for('department', id = department.id) }}">
-                            <th scope="row">{{ loop.index }}</th>
-                            <td>{{ department.name }}</td>
-                            <td>{{ department.get_average_salar() }}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="col-lg-8">
         <div class="card">
             <div class="card-body">
@@ -86,6 +47,41 @@ Departments App
             </div>
         </div>
     </div>
-
+    <div class="col-4 col-lg-4 col-xl-4">
+        <div class="card border-right">
+            <div class="card-body">
+                <h5 class="card-title">Departments</h5>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="col-1" scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th class="col-1" scope="col">Average salary</th>
+                        </tr>
+                        </thead>
+                        <tbody class="linkRow">
+                        {% for department in departments %}
+                        <tr data-href="{{ url_for('department', id = department.id) }}">
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ department.name }}</td>
+                            <td>{{ department.get_average_salar() }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!--End Row-->
 {% endblock %}

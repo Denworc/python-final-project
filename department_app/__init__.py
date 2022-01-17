@@ -18,7 +18,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 api = Api(app)
 
-# import logger
 if not app.debug:
 
     if not os.path.exists('logs'):
