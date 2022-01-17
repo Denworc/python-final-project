@@ -97,4 +97,4 @@ def employee_delete(id):
         service.EmployeeService.delete_employee(id)
         return redirect(url_for('employees'))
     except Exception as ex:
-        return str(ex)
+        return str(ex), 404

@@ -84,4 +84,4 @@ def department_delete(id):
         service.DepartmentService.delete_department(id)
         return redirect(url_for('departments'))
     except Exception as ex:
-        return str(ex)
+        return str(ex), 404
