@@ -7,7 +7,7 @@ Functions:
 """
 from flask import render_template, url_for, redirect, flash
 from department_app import app
-from department_app import forms, service
+from department_app import forms, service, rest
 
 
 @app.route('/departments', methods=['POST', 'GET'])
