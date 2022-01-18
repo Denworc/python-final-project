@@ -1,3 +1,5 @@
+
+[![Build Status](https://app.travis-ci.com/Denworc/python-final-project.svg?branch=main)](https://app.travis-ci.com/Denworc/python-final-project)
 [![Coverage Status](https://coveralls.io/repos/github/Denworc/python-final-project/badge.svg?branch=main)](https://coveralls.io/github/Denworc/python-final-project?branch=main)
 
 # EPAM Online Python external program (final project): Department app
