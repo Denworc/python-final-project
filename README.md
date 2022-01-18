@@ -2,7 +2,14 @@
 
 # EPAM Online Python external program (final project): Department app
 ***
+Simple web application for managing departments and employees. 
+The web application use aforementioned web service for storing data and reading from database.
 
+The web application allow:
+
+1. display a list of departments and the average salary (calculated automatically) for these departments
+2. display a list of employees in the departments with an indication of the salary for each employee and a search field to search for employees born on a certain date or in the period between dates 
+3. change (add / edit / delete) the above data
 ***
 ### Deployment
 
@@ -32,7 +39,20 @@
     flask db upgrade
 
 ```
+4. Run the application:
+   1. With gunicorn (available on : http://127.0.0.1:8000):
+```html
 
+    gunicorn app:app
+
+```
+   2. With flask development server (available on : http://127.0.0.1:5000/):
+```html
+
+    flask run
+
+```
+***
 
 
 
