@@ -43,17 +43,17 @@ The web application allow:
 ```
 4. Run the application:
    1. With gunicorn (available on : http://127.0.0.1:8000):
-```html
+        ```html
 
-    gunicorn app:app
+            gunicorn app:app
 
-```
+        ```
    2. With flask development server (available on : http://127.0.0.1:5000/):
-```html
+        ```html
 
-    flask run
+            flask run
 
-```
+        ```
 ***
 
 
